@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BR K S Development</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #050505;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.screen {
+    display: none;
+    min-height: 100vh;
+    padding: 35px 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#home {
+    display: flex;
+}
+
+h1 {
+    color: #00aaff;
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+h2 {
+    color: white;
+}
+
+button {
+    display: block;
+    width: 260px;
+    max-width: 90%;
+    padding: 17px;
+    margin: 14px auto;
+    background: #151515;
+    color: white;
+    border: 2px solid #008cff;
+    border-radius: 9px;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+button:active {
+    background: #0066aa;
+}
+
+.message {
+    color: #00ff88;
+    font-size: 19px;
+    line-height: 1.7;
+}
+
+#hackImage {
+    max-width: 95%;
+    max-height: 75vh;
+    object-fit: contain;
+}
+
+.small {
+    color: #888;
+    font-size: 13px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HAUPTMENÜ -->
+<div id="home" class="screen">
+    <h1>BR K S Development</h1>
+    <p>PS4 Application Demo</p>
+
+    <button onclick="showScreen('console')">
+        Console Log
+    </button>
+
+    <button onclick="startHack()">
+        Start Hack
+    </button>
+
+    <p class="small">Version 1.0</p>
+</div>
+
+<!-- CONSOLE LOG -->
+<div id="console" class="screen">
+    <h2>Console Log</h2>
+
+    <p class="message">
+        Nutzungsbereit<br><br>
+        Console Log confirmed.<br>
+        Please exit the app and open it again.
+    </p>
+
+    <button onclick="showScreen('home')">
+        OK
+    </button>
+</div>
+
+<!-- START HACK -->
+<div id="hack" class="screen">
+    <h2>BR K S Development</h2>
+
+    <p>Start Hack – Demo</p>
+
+    <img
+        id="hackImage"
+        src="startbild.jpg"
+        alt="BR K S Development Startbild"
+    >
+
+    <p class="message">Demo gestartet</p>
+</div>
+
+<!-- ABSCHLUSS -->
+<div id="finished" class="screen">
+    <h2>BR K S Development</h2>
+    <p class="message">Demo abgeschlossen.</p>
+
+    <button onclick="showScreen('home')">
+        Zurück zum Menü
+    </button>
+</div>
+
+<script>
+function showScreen(id) {
+    document.querySelectorAll('.screen').forEach(screen => {
+        screen.style.display = 'none';
+    });
+
+    document.getElementById(id).style.display = 'flex';
+}
+
+function startHack() {
+    showScreen('hack');
+
+    setTimeout(() => {
+        showScreen('finished');
+    }, 5000);
+}
+</script>
+
+</body>
+</html>
